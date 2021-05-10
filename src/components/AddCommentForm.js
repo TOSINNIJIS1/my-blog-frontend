@@ -5,7 +5,7 @@ export default function AddCommentForm({ articleName, setArticleInfo }) {
     const [comment, setComment] = useState('');
 
     const addComment = async () => {
-        const result = await fetch(`/api/articles/${articleName}/addComment`, {
+        const result = await fetch(`https://vin-blog.herokuapp.com/api/articles/${articleName}/addComment`, {
             method: 'POST',
             body: JSON.stringify({ username, text: comment }),
             headers: {

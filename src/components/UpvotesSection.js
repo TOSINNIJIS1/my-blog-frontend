@@ -1,6 +1,6 @@
 export default function UpvotesSection({ articleName, upvotes, setArticleInfo }) {
     const upvoteArticle = async () => {
-        const result = await fetch(`/api/articles/${articleName}/upvote`, {
+        const result = await fetch(`https://vin-blog.herokuapp.com/api/articles/${articleName}/upvote`, {
             method: 'POST',
         })
         const body = await result.json()
