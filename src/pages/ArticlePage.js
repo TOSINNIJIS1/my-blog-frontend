@@ -17,12 +17,14 @@ export default function ArticlePage({ match }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(`/api/articles/${name}`)
+            const result = await fetch(`https://vin-blog.herokuapp.com/api/articles/${name}`)
             const body = await result.json();
             setArticleInfo(body)
         }
         fetchData()
     },[name])
+
+    console.log(articleInfo, 'info')
 
     if (!article) return <NotFoundPage />
 
