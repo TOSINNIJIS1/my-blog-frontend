@@ -1,12 +1,11 @@
-import { useState } from "react";
-import axios from 'axios';
+import { useState } from "react"
 
 export default function AddCommentForm({ articleName, setArticleInfo }) {
     const [username, setUsername] = useState('');
     const [comment, setComment] = useState('');
 
     const addComment = async () => {
-        const result = await axios(`https://vin-blog.herokuapp.com/api/articles/${articleName}/addComment`, {
+        const result = await fetch(`/api/articles/${articleName}/addComment`, {
             method: 'POST',
             body: JSON.stringify({ username, text: comment }),
             headers: {

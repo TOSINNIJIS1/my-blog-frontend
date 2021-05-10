@@ -5,7 +5,6 @@ import CommentsList from '../components/CommentsList'
 import { useState, useEffect } from 'react';
 import UpvotesSection from '../components/UpvotesSection';
 import AddCommentForm from '../components/AddCommentForm';
-import axios from 'axios';
 
 
 export default function ArticlePage({ match }) {
@@ -18,11 +17,9 @@ export default function ArticlePage({ match }) {
 
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get(`/api/articles/${name}`)
-            // .then(res => res.json())
-            .then(res => setArticleInfo(res.data))
-            // const body = await result.json();
-            
+            const result = await fetch(`/api/articles/${name}`)
+            const body = await result.json();
+            setArticleInfo(body)
         }
         fetchData()
     },[name])
